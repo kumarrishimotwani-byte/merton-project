@@ -1,0 +1,20 @@
+{
+  "snapshot_price_end": "2026-11-09",
+  "monthly_rate_start": "2008-01",
+  "monthly_rate_end": "2026-10",
+  "files": {
+    "^NSEI.csv": "285a04447559ba6af4e6b6d1f8c6d5538f01088746d88a27ff6b679a6a5b39c8",
+    "HDFCBANK.NS.csv": "d6d49012ba4cacff3134da358e44e2ad17f9e7d68b63f91ad1f2bd07df2c2085",
+    "HINDUNILVR.NS.csv": "522dbf26dcfa4fe12e7ab77ef9a914f00366cd431c7376808f55320e25d8c310",
+    "INFY.NS.csv": "9f6ca0247e174d794fa1a0928108193684949a1a4aa10ff7d36ddd02dc321712",
+    "p2_provenance/nifty_yahoo_missing_sessions.csv": "793aed5ec1831bd3f056ab4f0cd764edea131928cef5cb4de2da5558f84a37fb",
+    "p2_provenance/nse_closed_dates.csv": "4cdb83f44049db1018665f26f3a9bbfbbfec912c7c36bc4f59ec980b67878b54",
+    "p2_provenance/rbi_91d_auction_quotes.csv": "4a296d08701eb02527dbae3a3a05ef6ae7cf281fbd6648400f989c1e5a193628",
+    "p2_provenance/yahoo_^NSEI.csv": "50f9c247edd4f7fe2635400237cc71d8432006c80d967c981300e1a3284d8824",
+    "p2_provenance/yahoo_HDFCBANK.NS.csv": "0f1b89d9147241e096362ed6ae629489d9b7fabb64c45a59734f6344de0c23a6",
+    "p2_provenance/yahoo_HINDUNILVR.NS.csv": "e6c5da40e0b5cfc1f0ba3920953a6ed449e2f5842f5ed8e8f5d78046f5767796",
+    "p2_provenance/yahoo_INFY.NS.csv": "2d94e2dcea2e199937597e657292357be254be2f1d620c70adcfa4890dff6e5f",
+    "tbill_91d.csv": "8e7a3273a63948a80291d50981fefb45600755663402edd0b6ecc2a0689a8b35"
+  },
+  "hash_basis": "UTF-8 text without BOM, normalized LF line endings"
+}
