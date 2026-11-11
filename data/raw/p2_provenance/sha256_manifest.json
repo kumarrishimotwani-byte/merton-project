@@ -3,17 +3,18 @@
   "monthly_rate_start": "2008-01",
   "monthly_rate_end": "2026-10",
   "files": {
-    "^NSEI.csv": "f95e57011ad3047cfcd2e346816824e01fdb8a53b44d0381cf11948b7f178a7b",
-    "HDFCBANK.NS.csv": "9b0f2257c9ca4f87b7c60783a41204c097c395b3692d9c9f8d5e368f50bae135",
-    "HINDUNILVR.NS.csv": "a76216d9c576e8769a9f79eb8d1c7d8efea11a9016fc041b937b75600f3dbad6",
-    "INFY.NS.csv": "a2ae5428d842fc2b92b2ff4274aea0cef7af2b6fb77a3b15c9b589412fdab8a0",
-    "p2_provenance/nifty_yahoo_missing_sessions.csv": "67b8cf56f09b1784b2ccc6dd3fdfb409939167495b22a022ff72428191ed4fd2",
-    "p2_provenance/nse_closed_dates.csv": "4139fa41ae4ee00bce450fa0c50acc2c1d102fd62d267a24caef6b06e40fa534",
-    "p2_provenance/rbi_91d_auction_quotes.csv": "75b0f70e511f8f08b3c33b202453f196f1858b72b8902d0147fe2e72acf76304",
-    "p2_provenance/yahoo_^NSEI.csv": "5f152e5c4fc7c42b26120ec5ca7bb6c7113426002db766f66cc133146097f717",
-    "p2_provenance/yahoo_HDFCBANK.NS.csv": "9062d028ddac12e96a4bbad5df51a69190814f868c0b089093262d146ad6314b",
-    "p2_provenance/yahoo_HINDUNILVR.NS.csv": "f1fc21dd4f791688446d985c96187d6552355a954aa9f1c50408e1391114f846",
-    "p2_provenance/yahoo_INFY.NS.csv": "900ca743d1ecffdc2c325e37484a863616f34a378e96940f60900eed124fe0dd",
-    "tbill_91d.csv": "c5915b8c7d1c775cab28dae9ba45b53445d25d9ada30f7af225b80e39860977a"
-  }
+    "^NSEI.csv": "285a04447559ba6af4e6b6d1f8c6d5538f01088746d88a27ff6b679a6a5b39c8",
+    "HDFCBANK.NS.csv": "d6d49012ba4cacff3134da358e44e2ad17f9e7d68b63f91ad1f2bd07df2c2085",
+    "HINDUNILVR.NS.csv": "522dbf26dcfa4fe12e7ab77ef9a914f00366cd431c7376808f55320e25d8c310",
+    "INFY.NS.csv": "9f6ca0247e174d794fa1a0928108193684949a1a4aa10ff7d36ddd02dc321712",
+    "p2_provenance/nifty_yahoo_missing_sessions.csv": "793aed5ec1831bd3f056ab4f0cd764edea131928cef5cb4de2da5558f84a37fb",
+    "p2_provenance/nse_closed_dates.csv": "4cdb83f44049db1018665f26f3a9bbfbbfec912c7c36bc4f59ec980b67878b54",
+    "p2_provenance/rbi_91d_auction_quotes.csv": "4a296d08701eb02527dbae3a3a05ef6ae7cf281fbd6648400f989c1e5a193628",
+    "p2_provenance/yahoo_^NSEI.csv": "50f9c247edd4f7fe2635400237cc71d8432006c80d967c981300e1a3284d8824",
+    "p2_provenance/yahoo_HDFCBANK.NS.csv": "0f1b89d9147241e096362ed6ae629489d9b7fabb64c45a59734f6344de0c23a6",
+    "p2_provenance/yahoo_HINDUNILVR.NS.csv": "e6c5da40e0b5cfc1f0ba3920953a6ed449e2f5842f5ed8e8f5d78046f5767796",
+    "p2_provenance/yahoo_INFY.NS.csv": "2d94e2dcea2e199937597e657292357be254be2f1d620c70adcfa4890dff6e5f",
+    "tbill_91d.csv": "8e7a3273a63948a80291d50981fefb45600755663402edd0b6ecc2a0689a8b35"
+  },
+  "hash_basis": "UTF-8 text without BOM, normalized LF line endings"
 }
