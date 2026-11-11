@@ -1,37 +1,43 @@
-"""Estimating mu, sigma and pi from prices (owner: Person 2). See docs/PLAN.md Section 2.5.
-
-Under GBM, daily log returns R_i = ln(S_i / S_{i-1}) are i.i.d.
-N((mu - sigma^2/2) dt, sigma^2 dt). Reverse these moments to estimate mu and sigma.
-
-TODO (Person 2): implement the three functions below. Keep the signatures exactly as they are.
-"""
+"""GBM moment estimates for Person 2, following PLAN.md Section 2.5."""
 
 import numpy as np
-
-from src import config
+from src import config, theory
 
 
 def log_returns(prices) -> np.ndarray:
-    """Log returns ln(S_i / S_{i-1}) of a price series, with NaNs dropped.
+    """Return ln(S_i / S_{i-1}) after dropping missing prices (PLAN.md 2.5).
 
-    `prices` may be a pd.Series or a 1-D numpy array. Returns a 1-D numpy array of length n - 1.
+    Missing observations bridge adjacent observed prices. Unequal time
+    intervals require additional handling by the caller.
     """
-    raise NotImplementedError("Person 2: implement log_returns")
+    values = np.asarray(prices, dtype=float)
+    if values.ndim != 1:
+        raise ValueError("Prices must be one-dimensional")
+    values = values[~np.isnan(values)]
+    if values.size < 2 or not np.isfinite(values).all() or np.any(values <= 0):
+        raise ValueError("At least two finite positive prices are required")
+    return np.diff(np.log(values))
 
 
 def estimate_params(log_rets, dt=config.DT) -> tuple:
-    """Return (mu_hat, sigma_hat) from log returns sampled every dt years.
+    """Estimate sigma^2=s^2/dt and mu=m/dt+sigma^2/2 (PLAN.md 2.5).
 
-        sigma_hat^2 = s^2 / dt                    (s^2: sample variance, ddof=1)
-        mu_hat      = m / dt + sigma_hat^2 / 2     (m: sample mean)
-
-    The + sigma_hat^2 / 2 undoes the -sigma^2/2 that Ito's lemma puts into the log-return mean.
-    Must also work row-wise if Person 4 passes a 2-D array (one history per row) - optional,
-    but useful for speed; if implemented, return two arrays.
+    Input is one finite history. Sample variance uses ddof=1. The Ito
+    correction converts the mean log growth rate to the price SDE drift.
     """
-    raise NotImplementedError("Person 2: implement estimate_params")
+    returns = np.asarray(log_rets, dtype=float)
+    if returns.ndim != 1 or returns.size < 2 or not np.isfinite(returns).all():
+        raise ValueError("At least two finite one-dimensional returns are required")
+    if not np.isfinite(dt) or dt <= 0:
+        raise ValueError("dt must be finite and positive")
+    sigma_squared = np.var(returns, ddof=1) / dt
+    mu = np.mean(returns) / dt + sigma_squared / 2
+    return float(mu), float(np.sqrt(sigma_squared))
 
 
 def estimate_pi(log_rets, r, gamma, dt=config.DT) -> float:
-    """Estimated Merton fraction: theory.merton_pi(*estimate_params(log_rets, dt), r, gamma)."""
-    raise NotImplementedError("Person 2: implement estimate_pi")
+    """Use theory.merton_pi with estimates from PLAN.md Section 2.5."""
+    mu, sigma = estimate_params(log_rets, dt)
+    if not np.isfinite(gamma) or gamma <= 0 or not np.isfinite(r) or sigma <= 0:
+        raise ValueError("Positive gamma and volatility and finite r are required")
+    return float(theory.merton_pi(mu, sigma, r, gamma))
