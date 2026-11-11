@@ -26,6 +26,10 @@ market where the truth is known, and backtest it on NIFTY 50 and three NSE stock
 3. **Using an AI assistant?** Point it at this repo and tell it which person you are. It must read
    `AGENTS.md` first (Claude Code reads it automatically through `CLAUDE.md`). The function signatures in
    `src/` are shared by all five of us and must not change.
+4. **Using Person 2's data or estimates, especially for Persons 3, 4 and 5?** Read the
+   [Person 2 handoff](data/raw/P2_README.md) alongside `AGENTS.md` and `docs/PLAN.md` before implementing
+   your experiments. It explains the input schemas and examples, source corrections, snapshot dates,
+   rate units and availability, missing stock sessions, and validation limits.
 
 | Role | Files | Status |
 |---|---|---|

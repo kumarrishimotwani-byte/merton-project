@@ -15,6 +15,13 @@ certainty-equivalent return that costs, in simulation and on real Indian market 
 **The full specification is `docs/PLAN.md`. Read Sections 1-4 and the section for the person you are helping.**
 `docs/project_plan.pdf` is the same plan as a PDF; `docs/proposal.pdf` is what was submitted to the professor.
 
+**Before using Person 2's inputs, including work for Persons 3, 4 and 5, also read
+[`data/raw/P2_README.md`](data/raw/P2_README.md).** Treat it as the data handoff alongside this file and
+`docs/PLAN.md`. It documents the CSV schemas and usage examples, source corrections, snapshot dates,
+rate units and availability, stock-calendar gaps, and limits of the verification. Apply its as-of timing
+and gap-handling instructions when consuming the data. Review the documented departures from the plan
+with the coordinator before changing those choices.
+
 ## 2. Who owns what
 
 | Person | Role | Owns these files |
