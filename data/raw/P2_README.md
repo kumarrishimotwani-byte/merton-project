@@ -63,6 +63,14 @@ Use completed holding months only and explain that a 60/40 strategy here means s
 
 `P2_REPORT_DRAFT.md` supplies text for Person 1 to incorporate in `report/`. The primary NIFTY estimates are mu=0.0962059359 and sigma=0.2019070199, with a gamma=3 fraction 0.2712092667. The approximate drift standard error is 0.0469022037. The normal-quantile 95% interval is about [0.0042793, 0.1881326]. The volatility standard error is 0.0020891902. These are model-conditional uncertainties rather than guarantees of future parameter stability. Normality diagnostics give skewness -0.3303, excess kurtosis 16.0745 and a Jarque-Bera statistic about 50,247.65. A displayed p-value of zero is numerical underflow and should be described as extremely small.
 
+### Follow-up on Rishi's review
+
+The official NIFTY calendar averages 247.7222 sessions per complete year over 2008-2025, with yearly counts from 243 to 252. The plan's 252-session convention is retained for team consistency. Using 248 sessions on the same observed log returns scales mu by 248/252 and sigma by sqrt(248/252). With the same annual r, the results are mu=0.0946788576, sigma=0.2002981734 and pi(gamma=3)=0.2628958166. These correspond to relative changes of about -1.59% in mu and -0.80% in sigma. The risky allocation changes by -0.8313 percentage points of wealth. This sensitivity supports the qualitative drift-uncertainty observation but has not been run through Person 5's backtest.
+
+To reproduce, call `estimation.estimate_params(estimation.log_returns(data.load_prices(config.MAIN_TICKER)), dt=1/248)`, and pass the result with `data.risk_free_constant()` and `config.GAMMA` to `theory.merton_pi`. This is a review sensitivity calculation, with the main shared config kept at the specified 252.
+
+The displayed NIFTY volatility uncertainty of about +/-0.2 percentage points is one approximate standard error. A normal-approximation 95% half-width is about 0.4095 percentage points. The drift's 0.43%-18.81% interval is already a 95% interval. The distinction should be explicit in the report. The ACT/365 rate correction raises the same-sample mean by 0.153822 percentage points (6.303722% versus 6.149900%). The report draft records both the annualization choice and rate correction.
+
 ## Items for the coordinator
 
 These are flagged for review, without editing other members' files.
