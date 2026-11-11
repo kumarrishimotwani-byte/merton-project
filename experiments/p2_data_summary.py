@@ -24,6 +24,7 @@ def main():
     coverage_rows = []
     gap_rows = []
     calendar = data.load_prices(config.MAIN_TICKER).index
+    completed_months = rates.loc[rates.index <= calendar[-1]].index.to_period("M")
 
     for ticker in config.TICKERS:
         prices = data.load_prices(ticker)
@@ -47,8 +48,10 @@ def main():
         # This experiment-specific window is not currently exposed in config.
         rolling_rows = []
         for end in returns.resample(pd.offsets.MonthEnd()).last().index:
-            if end > returns.index[-1]:
-                continue  # Exclude the incomplete last month.
+            if end > returns.index[-1] and end.to_period("M") not in completed_months:
+                # A dated monthly rate snapshot confirms a completed exchange month,
+                # even when its last session precedes calendar month-end.
+                continue
             start = end - pd.DateOffset(years=5)
             if start < prices.index[0]:
                 continue
