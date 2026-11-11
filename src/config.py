@@ -34,3 +34,13 @@ PLACEHOLDER_SIGMA = 0.18                    # volatility
 # --- Reproducibility and outputs -------------------------------------------------
 SEED = 42
 FIG_DPI = 150
+
+# --- Person 3: accuracy experiment (PLAN.md Section 7, Test A) --------------------
+P3_ACCURACY_S0 = 100.0
+P3_ACCURACY_MU = 0.10
+P3_ACCURACY_SIGMA = 0.20
+P3_ACCURACY_T = 1.0
+P3_ACCURACY_N_PATHS = 10_000
+P3_ACCURACY_STEPS = (12, 52, TRADING_DAYS)
+# The experiment derives the fine grid as lcm(12, 52, 252) = 3276.
+# The plan's 1008-step fine grid cannot aggregate into equal weekly blocks.
