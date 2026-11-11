@@ -44,3 +44,15 @@ P3_ACCURACY_N_PATHS = 10_000
 P3_ACCURACY_STEPS = (12, 52, TRADING_DAYS)
 # The experiment derives the fine grid as lcm(12, 52, 252) = 3276.
 # The plan's 1008-step fine grid cannot aggregate into equal weekly blocks.
+
+# --- Person 3: optimality and sensitivity (PLAN.md Section 7, Tests B and C) -----
+P3_WEALTH_X0 = 1.0
+P3_WEALTH_T = 5.0
+P3_WEALTH_STEPS_PER_YEAR = 52
+P3_WEALTH_N_PATHS = 20_000
+P3_PI_GRID = (-0.5, 2.5, 31)                 # np.linspace(start, stop, count)
+P3_WEALTH_MULTIPLIERS = (0.5, 1.0, 2.0)     # multiples of pi* at the main gamma
+P3_SENSITIVITY_GAMMA = (1.0, 10.0)
+P3_SENSITIVITY_SIGMA = (0.1, 0.4)
+P3_SENSITIVITY_EXCESS_RETURN = (-0.05, 0.15)
+P3_SENSITIVITY_POINTS = 101
