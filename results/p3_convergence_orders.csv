@@ -1,0 +1,3 @@
+method,observed_strong_order,expected_strong_order
+euler,0.4974013941248949,0.5
+milstein,0.997679338666803,1.0
