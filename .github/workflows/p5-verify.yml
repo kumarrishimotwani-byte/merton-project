@@ -1,0 +1,44 @@
+name: Person 5 real-data verification
+
+on:
+  push:
+    branches: [p5-backtest]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run complete test suite
+        run: python -m pytest -q
+      - name: Generate real-data backtest and plots
+        run: python -m experiments.p5_backtest
+      - name: Verify results
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          s = pd.read_csv('results/p5_main_metrics.csv').set_index('strategy')
+          e = pd.read_csv('results/p5_endpoint_sensitivity.csv')
+          assert len(pd.read_csv('results/p5_backtest_summary.csv')) == 216
+          assert len(pd.read_csv('results/p5_nifty_monthly_paths.csv')) == 990
+          assert len(e) == 18
+          assert abs(s.loc['merton', 'realised_ce_ann'] - 0.06699984732004556) < 1e-8
+          assert abs(s.loc['merton_clipped', 'realised_ce_ann'] - 0.0780633308601485) < 1e-8
+          assert abs(s.loc['60/40', 'realised_ce_ann'] - 0.0777107575932444) < 1e-8
+          check = e[(e.window_years == 5)&(e.strategy == 'merton')].iloc[0]
+          assert abs(check.delta_ce_percentage_points - 0.018074726388196682) < 1e-8
+          for p in ['figures/p5_wealth_NSEI.png','figures/p5_pihat_path.png','figures/p5_ce_bars.png']:
+              assert Path(p).is_file() and Path(p).stat().st_size > 1000
+          print('PASS: real-data outputs and all baseline/sensitivity checkpoints')
+          PY
